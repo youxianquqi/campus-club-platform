@@ -1,0 +1,32 @@
+# ---------- IDE / 编辑器 ----------
+.cursor/
+.trae/
+.idea/
+.vscode/
+*.iml
+
+# ---------- 系统文件 ----------
+.DS_Store
+Thumbs.db
+
+# ---------- 依赖与构建产物 ----------
+node_modules/
+dist/
+target/
+*.class
+*.jar
+!**/.mvn/wrapper/maven-wrapper.jar
+
+# ---------- 日志与临时文件 ----------
+*.log
+logs/
+*.local
+
+# ---------- 本地配置与密钥 ----------
+.env
+.env.local
+application-local.yml
+application-local.yaml
+
+# ---------- 与本项目无关的示例脚本 ----------
+all-backend/src/main/resources/db/ecommerce_complete.sql

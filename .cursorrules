@@ -1,0 +1,26 @@
+# 项目全局约定
+
+## 技术栈（固定版本表述，生成代码须对齐）
+
+- 后端：JDK 17、Spring Boot 3.2.12、MyBatis-Plus 3.5.6、MySQL 8.0、Redis 7.0
+- 前端：Vue 3.4、Vite 5.2、Element Plus 2.8、Pinia 2.1
+
+禁止使用 Spring Boot 2、`javax.*`（Servlet / 持久化 / 校验等）、Vue 2 / Options API 作为默认写法。
+
+## 目录结构（可按脚手架微调，保持分层清晰）
+
+- 后端典型包：`controller`、`service`、`mapper`、`entity`（或 `domain`）、`dto`、`config`
+- 前端典型目录：`views`、`components`、`stores`、`api`、`router`
+
+## 安全与配置
+
+- 密钥、连接串、生产配置不得提交仓库；使用环境变量或本地覆盖文件（如 `application-local.yml` 且已加入 `.gitignore`）。
+
+## 协作与改动风格
+
+- 用户用中文沟通时，助手回复使用中文。
+- 改动聚焦需求：避免无关重构、不扩大范围；与现有代码风格、命名、导入方式保持一致。
+
+## 细则
+
+语言与场景相关的规范见 `.cursor/rules/*.mdc`（按文件类型自动匹配）。

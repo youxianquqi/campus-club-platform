@@ -1,0 +1,28 @@
+# 开发环境：与 item/enditem-master 的 application.properties 对齐的本地默认值
+# 生产请勿使用本 profile 中的默认密码；优先用环境变量 MYSQL_PASSWORD、AI_API_KEY 等覆盖
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/club_home?useUnicode=true&characterEncoding=utf-8&connectionCollation=utf8mb4_unicode_ci&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: ${MYSQL_USER:root}
+    # 本地开发请设置环境变量 MYSQL_PASSWORD，勿在仓库中写死密码
+    password: ${MYSQL_PASSWORD:a123456}
+
+# 与 item: file.upload.path=f:/enditeam/backend/uploads/
+file:
+  upload:
+    path: ${FILE_UPLOAD_PATH:f:/enditeam/backend/uploads/}
+
+# 勿在此重复定义 ai.api.*：否则会覆盖 spring.config.import 的 application-local.yml，
+# 导致未设置 AI_API_KEY 环境变量时 key 恒为空，DeepSeek 永远不会被调用。
+# AI 配置见根 application.yml；密钥用环境变量 AI_API_KEY 或仓库外/模块下的 application-local.yml。
+
+logging:
+  level:
+    com.endtiem: DEBUG
+    com.baomidou.mybatisplus: DEBUG
+# 本地敏感配置（勿提交仓库；本文件已在 .gitignore）
+ai:
+  api:
+    # 通过环境变量 DEEPSEEK_API_KEY 注入，请勿在仓库中提交真实密钥
+    key: ${DEEPSEEK_API_KEY:}

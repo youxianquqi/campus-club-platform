@@ -1,0 +1,76 @@
+# =============================================================================
+# 生产环境配置 - 直接配置，无环境变量
+# =============================================================================
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: endtiem
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+  datasource:
+    url: jdbc:mysql://localhost:3306/club_home?useUnicode=true&characterEncoding=utf-8&connectionCollation=utf8mb4_unicode_ci&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root_sea
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password:
+      database: 0
+      timeout: 5s
+      lettuce:
+        pool:
+          max-active: 32
+          max-idle: 16
+          min-idle: 4
+          max-wait: 3s
+      client-name: endtiem-backend
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: com.endtiem.admin.entity,com.endtiem.recruitment.entity,com.endtiem.club.entity,com.endtiem.platform.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  global-config:
+    db-config:
+      id-type: auto
+
+file:
+  upload:
+    path: /www/wwwroot/endtiem-uploads/
+
+jwt:
+  secret: your_super_secret_jwt_key_minimum_32_characters_here
+  expire-ms: 86400000
+
+ai:
+  api:
+    # 通过环境变量 DEEPSEEK_API_KEY 注入，请勿在仓库中提交真实密钥
+    key: ${DEEPSEEK_API_KEY:}
+    url: https://api.deepseek.com/v1/chat/completions
+    model: deepseek-chat
+  summary:
+    allow-local-fallback: false
+
+logging:
+  level:
+    root: WARN
+    com.endtiem: INFO
+    com.baomidou.mybatisplus: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
