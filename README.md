@@ -16,7 +16,9 @@
 
 ![项目速览](docs/images/overview.gif)
 
-[▶ 观看 1 分钟系统演示视频](docs/media/demo.mp4)
+[▶ 在线观看 1 分钟系统演示视频](https://youxianquqi.github.io/campus-club-platform/media/demo.mp4) · [下载视频](docs/media/demo.mp4)
+
+<sub>视频托管在 GitHub Pages，点击即可在线播放；若网络无法访问，可下载 `docs/media/demo.mp4` 本地观看。</sub>
 
 </div>
 
